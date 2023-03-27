@@ -1,4 +1,4 @@
-# fly.toml file generated for whoant-bot on 2023-03-27T11:00:31+07:00
+# fly.toml file generated for whoant-bot on 2023-03-27T16:54:18+07:00
 
 app = "whoant-bot"
 kill_signal = "SIGINT"
@@ -6,35 +6,40 @@ kill_timeout = 5
 processes = []
 
 [build]
-    builder = "heroku/buildpacks:20"
+  builder = "heroku/buildpacks:20"
 
 [env]
-    PORT = "3000"
+  POE_BOT = "chinchilla"
+  POE_CHATID = ""
+  POE_COOKIE = ""
+  POE_FORMKEY = ""
+  PORT = "3000"
+  TELEGRAM_BOT_TOKEN = ""
 
 [experimental]
-    auto_rollback = true
+  auto_rollback = true
 
 [[services]]
-    http_checks = []
-    internal_port = 3000
-    processes = ["app"]
-    protocol = "tcp"
-    script_checks = []
-[services.concurrency]
+  http_checks = []
+  internal_port = 3000
+  processes = ["app"]
+  protocol = "tcp"
+  script_checks = []
+  [services.concurrency]
     hard_limit = 25
     soft_limit = 20
     type = "connections"
 
-[[services.ports]]
+  [[services.ports]]
     force_https = true
     handlers = ["http"]
     port = 80
 
-[[services.ports]]
+  [[services.ports]]
     handlers = ["tls", "http"]
     port = 443
 
-[[services.tcp_checks]]
+  [[services.tcp_checks]]
     grace_period = "1s"
     interval = "15s"
     restart_limit = 0
