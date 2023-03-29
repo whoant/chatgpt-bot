@@ -7,13 +7,13 @@ const { convertCookieToAppState } = require('./utils');
 
 const POE_CHATID = process.env.POE_CHATID;
 const POE_BOT = process.env.POE_BOT;
-const FACEBOOK_COOKE = process.env.FACEBOOK_COOKIE;
+const FACEBOOK_COOKIE = process.env.FACEBOOK_COOKIE;
 
 const host = '0.0.0.0';
 const port = process.env.PORT || 3000;
 
 const credential = {
-    appState: convertCookieToAppState(FACEBOOK_COOKE),
+    appState: convertCookieToAppState(FACEBOOK_COOKIE),
 };
 
 let isWaitResponse = false;
